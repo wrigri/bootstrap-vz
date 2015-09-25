@@ -15,3 +15,4 @@ class ConfigureGrub(Task):
 		grub_config = os.path.join(info.root, 'etc/default/grub')
 		sed_i(grub_config, r'^(GRUB_CMDLINE_LINUX*=".*)"\s*$', r'\1console=ttyS0,38400n8 elevator=noop"')
 		sed_i(grub_config, r'^.*(GRUB_TIMEOUT=).*$', r'GRUB_TIMEOUT=0')
+		sed_i(grub_config, '^GRUB_HIDDEN_TIMEOUT=true', '#GRUB_HIDDEN_TIMEOUT=true')
